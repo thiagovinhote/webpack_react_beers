@@ -41,4 +41,5 @@ package-lock.json
 yarn.lock
 
 # Production
-dist
+[branch "master"]
+  dist
