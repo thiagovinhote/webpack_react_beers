@@ -31,6 +31,7 @@ module.exports = {
     ],
   },
   devServer: {
+    https: true,
     historyApiFallback: true,
   },
   output: {
