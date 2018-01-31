@@ -1,11 +1,12 @@
 const debug = process.env.NODE_ENV !== 'production';
 const webpack = require('webpack');
 const path = require('path');
+const HtmlPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: path.join(__dirname, 'src'),
   devtool: debug ? 'inline-sourcemap' : false,
-  entry: './js/index.js',
+  entry: './js/index',
   module: {
     loaders: [
       {
@@ -33,12 +34,13 @@ module.exports = {
     historyApiFallback: true,
   },
   output: {
-    path: `${__dirname}/src/`,
     filename: 'index.min.js',
+    path: `${__dirname}/dist/`,
   },
   plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+    new HtmlPlugin({ template: 'index.html' }),
   ],
 };
