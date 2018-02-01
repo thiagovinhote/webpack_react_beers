@@ -2,6 +2,7 @@ const debug = process.env.NODE_ENV !== 'production';
 const webpack = require('webpack');
 const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   context: path.join(__dirname, 'src'),
@@ -14,7 +15,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015', 'stage-0'],
+          presets: ['react', 'es2017', 'stage-0', 'env'],
           plugins: [
             'react-html-attrs',
             'transform-decorators-legacy',
@@ -38,10 +39,10 @@ module.exports = {
     filename: 'index.min.js',
     path: `${__dirname}/dist/`,
   },
-  plugins: debug ? [] : [
+  plugins: debug ? [new HtmlPlugin({ template: 'index.html' })] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+    new UglifyJsPlugin(),
     new HtmlPlugin({ template: 'index.html' }),
   ],
 };
