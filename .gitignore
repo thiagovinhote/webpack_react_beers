@@ -39,6 +39,3 @@ node_modules
 # yarn files
 package-lock.json
 yarn.lock
-
-# Production
-dist
