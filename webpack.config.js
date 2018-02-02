@@ -32,7 +32,6 @@ module.exports = {
     ],
   },
   devServer: {
-    https: debug ? false : true,
     historyApiFallback: true,
   },
   output: {
@@ -42,6 +41,9 @@ module.exports = {
   plugins: debug ? [new HtmlPlugin({ template: 'index.html' })] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    }),
     new UglifyJsPlugin(),
     new HtmlPlugin({ template: 'index.html' }),
   ],
