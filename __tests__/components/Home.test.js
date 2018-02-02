@@ -1,23 +1,55 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import configureStore from 'redux-mock-store';
 
-import Button from 'components/Button';
+import Home from 'pages/Home';
+import Card from 'components/Card';
+import { BeatLoader } from 'react-spinners';
 
-const beers = [
-  {
-    id: 1, name: 'Teste 1', description: 'Zero', image_url: '',
-  },
-  {
-    id: 2, name: 'Teste 2', description: 'Zero', image_url: '',
-  },
-  {
-    id: 3, name: 'Teste 3', description: 'Zero', image_url: '',
-  },
-];
+import BeerActions from 'store/ducks/beers';
 
-describe('Teste Home List', () => {
+const mockeStore = configureStore([]);
+
+const initialState = {
+  beers: {
+    data: [
+      { id: 1, name: 'Beer 1', description: 'Beer 1 description', image_url: 'image_url' },
+      { id: 2, name: 'Beer 2', description: 'Beer 2 description', image_url: 'image_url' },
+    ],
+    loading: false,
+    error: false,
+  }
+};
+
+describe('Testing Home List', () => {
+  let store = mockeStore(initialState);
+
+  function createWrapper() {
+    return shallow(
+        <Home />,
+        { context: { store } }
+    );
+  };
+
   it('renders as expected', () => {
-    const wrapper = shallow(<Button title="a" onClick={() => {}} />);
-    expect(wrapper.children()).toHaveLength(1);
+    const wrapper = createWrapper();
+    
+    expect(wrapper.prop('beers')).toEqual(initialState.beers);
+    expect(wrapper.dive().find(Card)).toHaveLength(initialState.beers.data.length);
+  });
+
+  it('loading as expected', () => {
+    const wrapper = createWrapper();
+
+    expect(wrapper.dive().find(BeatLoader)).toHaveLength(1);
+    expect(store.getActions()).toContainEqual(BeerActions.beersRequest());
+  });
+
+  it('show empty message', () => {
+    store = mockeStore({ ...initialState, beers: { data: [] } });
+
+    const wrapper = createWrapper();
+    
+    expect(wrapper.dive().contains(<p>Empty List</p>)).toBe(true);
   });
 });

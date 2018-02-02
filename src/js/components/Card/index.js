@@ -43,6 +43,7 @@ const Card = ({ beer, complet }) => (
 
 Card.propTypes = {
   beer: PropTypes.shape({
+    id: PropTypes.number,
     name: PropTypes.string,
     tagline: PropTypes.string,
     description: PropTypes.string,

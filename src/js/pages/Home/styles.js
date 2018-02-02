@@ -7,4 +7,9 @@ export default {
     display: 'flex',
     justifyContent: 'center',
   },
+
+  empty: {
+    textAlign: 'center',
+    color: '#5ECCE3',
+  },
 };
