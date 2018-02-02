@@ -30,8 +30,19 @@ describe('Testing beers api saga', () => {
 			.toEqual(BeerActions.beersSuccess(beersApi));
 	});
 
-	it('failure request beers', async () => {
+	it('throws request beers', async () => {
 		apiMock.onGet('/beers').reply(400);
+
+		sagaTester.dispatch(BeerActions.beersRequest());
+
+		await sagaTester.waitFor(`${BeerTypes.BEERS_FAILURE}`);
+
+		expect(sagaTester.getLatestCalledActions()[0])
+			.toEqual(BeerActions.beersFailure());
+	});
+
+	it('failure request beers', async () => {
+		apiMock.onGet('/beers').reply(203);
 
 		sagaTester.dispatch(BeerActions.beersRequest());
 
