@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-import Button from 'components/Button';
+import ButtonAction from 'components/ButtonAction';
 
 import styles from './styles';
 
@@ -23,7 +23,7 @@ class NotFound extends React.Component {
       <div style={styles.container}>
         <h1 style={styles.message}> Page Not Found </h1>
 
-        <Button
+        <ButtonAction
           onClick={this.redirect}
           title="Go to Home"
         />

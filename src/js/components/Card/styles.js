@@ -5,14 +5,18 @@ export default {
     padding: 10,
     marginBottom: 10,
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     WebkitBoxShadow: '0.5px 0.5px 1px 1px #9E9E9E',
     MozBoxShadow: '0.5px 0.5px 1px 1px #9E9E9E',
     boxShadow: '0.5px 0.5px 1px 1px #9E9E9E',
   },
 
   containerImage: {
-    height: 60,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
+    padding: 10,
   },
 
   containerInfo: {
@@ -20,7 +24,7 @@ export default {
   },
 
   image: {
-    height: 80,
+    height: 200,
   },
 
   title: {

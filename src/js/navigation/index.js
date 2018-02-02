@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Layout from 'pages/Layout';
+import Layout from 'components/Layout';
 import Home from 'pages/Home';
 import Detail from 'pages/Detail';
 import NotFound from 'pages/NotFound';

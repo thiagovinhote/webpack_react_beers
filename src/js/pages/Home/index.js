@@ -11,12 +11,8 @@ import styles from './styles';
 
 class Home extends React.Component {
   static propTypes = {
-    beersState: PropTypes.shape({
-      beers: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string,
-        tagline: PropTypes.string,
-        image_url: PropTypes.string,
-      })),
+    beers: PropTypes.shape({
+      data: PropTypes.arrayOf(Card.propTypes.beer),
       loading: PropTypes.bool,
     }).isRequired,
     beersRequest: PropTypes.func.isRequired,
@@ -27,8 +23,25 @@ class Home extends React.Component {
     return beersRequest();
   }
 
+  renderList = () => {
+    const { data } = this.props.beers;
+    return data.map(beer => (
+      <Card key={beer.id} beer={beer} />
+    ));
+  };
+
+  renderEmptyList = () => (
+    <h2 style={styles.empty}>Empty List</h2>
+  );
+
+  renderContent = () => (
+    this.props.beers.data.length > 0
+      ? this.renderList()
+      : this.renderEmptyList()
+  );
+
   render() {
-    const { beers, loading } = this.props.beersState;
+    const { loading } = this.props.beers;
     return (
       <div style={styles.container}>
         <div style={styles.loading}>
@@ -39,9 +52,7 @@ class Home extends React.Component {
         </div>
 
         { !loading &&
-          beers.map(beer => (
-            <Card key={beer.id} beer={beer} />
-          ))
+          this.renderContent()
         }
       </div>
     );
@@ -49,7 +60,7 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  beersState: state.beers,
+  beers: state.beers,
 });
 
 const mapDispatchToProps = dispatch => ({

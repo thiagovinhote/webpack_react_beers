@@ -16,7 +16,7 @@ export default Creators;
 /* Initial State */
 
 const INITIAL_STATE = {
-  beers: [],
+  data: [],
   beerSelected: {},
   loading: false,
   error: false,
@@ -27,24 +27,24 @@ const INITIAL_STATE = {
 export const request = state => ({
   ...state,
   loading: true,
-  beerSelect: {},
+  beerSelected: {},
 });
 
 export const success = (state, action) => ({
-  beers: action.data,
+  data: action.data,
   loading: false,
   error: false,
 });
 
 export const failure = state => ({
-  ...state,
+  data: [],
   loading: false,
   error: true,
 });
 
 export const select = (state, action) => ({
   ...state,
-  beerSelected: state.beers.find(b => b.id === action.id),
+  beerSelected: state.data.find(b => b.id === action.id),
 });
 
 export const reducer = createReducer(INITIAL_STATE, {
