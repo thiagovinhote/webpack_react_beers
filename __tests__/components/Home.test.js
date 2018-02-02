@@ -50,6 +50,6 @@ describe('Testing Home List', () => {
 
     const wrapper = createWrapper();
     
-    expect(wrapper.dive().contains(<p>Empty List</p>)).toBe(true);
+    expect(wrapper.dive().find('h2').text()).toBe('Empty List');
   });
 });
