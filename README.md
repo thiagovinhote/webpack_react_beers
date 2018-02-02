@@ -6,7 +6,7 @@ Aplicação rodando em um servidor, disponível em https://webappreact.herokuapp
 
 - Configuração do Eslint com padrão utilizado pela Airbnb.
 - Axios para requisição http
-- Redux, React-Redux, Redux-Saga e ReduxSauce para controle estado da aplicação
+- Redux, React-Redux, Redux-Saga e ReduxSauce para controle de estado da aplicação
 - Styled-Components para componentes estilizados, junto com styles-inline
 - Utilizando Jest, Enzyme, Redux-Mock-Store e Redux-Saga-Tester para realizar os testes.
 
