@@ -32,7 +32,7 @@ module.exports = {
     ],
   },
   devServer: {
-    https: true,
+    https: debug ? false : true,
     historyApiFallback: true,
   },
   output: {

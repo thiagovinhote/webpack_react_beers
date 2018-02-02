@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './styles';
+import { Button } from './styled';
 
-const Button = props => (
-  <button
-    style={styles.button}
+const ButtonAction = props => (
+  <Button
     onClick={props.onClick}
   >
     { props.title }
-  </button>
+  </Button>
 );
 
-Button.propTypes = {
+ButtonAction.propTypes = {
   onClick: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 };
 
-export default Button;
+export default ButtonAction;

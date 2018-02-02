@@ -6,7 +6,7 @@ import BeerActions from 'store/ducks/beers';
 
 import { Link } from 'react-router-dom';
 import Card from 'components/Card';
-import Button from 'components/Button';
+import ButtonAction from 'components/ButtonAction';
 
 class Detail extends React.Component {
   static propTypes = {
@@ -47,7 +47,7 @@ class Detail extends React.Component {
           this.props.beersState.beerSelected &&
           <Card complet beer={this.props.beersState.beerSelected} />
         }
-        <Button
+        <ButtonAction
           onClick={this.onBack}
           title="Back"
         />
