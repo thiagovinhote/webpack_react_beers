@@ -1,3 +1,4 @@
+
 # Web App Beers
 
 Aplicação para listagem de cervejas utilizando ReactJS, configurado com webpack.
@@ -24,6 +25,7 @@ Run: `npm run build`
 
 - Após executar o comando é criada uma pasta chamada `dist` com dois arquivos.
 > Para executar a versão de produção: **npm run dist**
+> 
 > Para executar *npm run dist* primeiro crie uma build com **npm run build**
 
 ## Test
