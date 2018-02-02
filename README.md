@@ -22,7 +22,9 @@ Run: `npm start`
 
 Run: `npm run build`
 
+- Após executar o comando é criada uma pasta chamada `dist` com dois arquivos.
 > Para executar a versão de produção: **npm run dist**
+> Para executar *npm run dist* primeiro crie uma build com **npm run build**
 
 ## Test
 
